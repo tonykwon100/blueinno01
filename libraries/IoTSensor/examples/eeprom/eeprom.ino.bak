@@ -1,0 +1,55 @@
+#include <EEPROM.h>
+
+void setup() {
+
+  int i;
+  int value;
+  int size;
+
+  // put your setup code here, to run once:
+  Serial.begin(115200);
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for native USB port only
+  }
+  
+  size = EEPROM.length();
+  
+  Serial.println("--Test EEPROM--");
+  Serial.print(" EEPROM Size : ");
+  Serial.println(size);
+
+/*
+  // Clear EEPROM
+  Serial.println("--Clear EEPROM--");
+  for (i = 0 ; i < size ; i++ )
+    EEPROM.write(i, 0);
+  Serial.println();
+*/
+
+  // Write EEPROM
+  Serial.println("--Write EEPROM--");
+  for(i=0;i<size;i++) {
+  	if(i%16 == 0) Serial.println();
+    EEPROM.write(i, (uint8_t)i);
+    Serial.print("(");
+    Serial.print(i, HEX);
+    Serial.print(",");
+    Serial.print((uint8_t)i, HEX);
+    Serial.print(")");
+  }
+  Serial.println();
+
+  // Read EEPROM
+  Serial.println("--Read EEPROM--");
+  for(i=0;i<size;i++) {
+  	if(i%16 == 0) Serial.println();
+    value = EEPROM.read(i);
+    Serial.print("(");
+    Serial.print(i, HEX);
+    Serial.print(",");
+    Serial.print((uint8_t)value, HEX);
+    Serial.print(")");
+  }
+}
+
+void loop() {}

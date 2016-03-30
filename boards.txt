@@ -1,0 +1,23 @@
+
+BlueInno2.name=BlueInno2
+BlueInno2.build.board=BlueInno2
+BlueInno2.build.mcu=cortex-m0
+BlueInno2.build.f_cpu=16000000
+BlueInno2.build.core=arduino
+BlueInno2.build.extra_flags=-mthumb -D__RFduino__ -D__STRICT_ANSI__
+BlueInno2.build.ldscript=linker_scripts/gcc/BlueInno2.ld
+BlueInno2.build.variant=BlueInno2
+BlueInno2.build.variant_system_include="-I{build.system.path}/BlueInno2" "-I{build.system.path}/BlueInno2/include" "-I{build.system.path}/CMSIS/CMSIS/Include"
+BlueInno2.build.variant_system_lib=libRFduinoSystem.a
+#RFduino.build.extra_flags=-DUSB_PID={build.pid} -DUSB_VID={build.vid} -DUSBCON
+#RFduino.build.vid=0x2341
+#RFduino.build.vid=0x003e
+
+BlueInno2.upload.tool=RFDLoader
+
+# required to avoid arduino ide exception on upload
+BlueInno2.upload.protocol=
+
+# sizer will not run if this is not defined
+# 128KB
+BlueInno2.upload.maximum_size=131072
